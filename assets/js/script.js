@@ -10,6 +10,16 @@ var day5 = [{ temp: '', wind: '', humidity: '' }];
 var day6 = [{ temp: '', wind: '', humidity: '' }];
 var recentCities = [];
 
+$('#search-form').submit(function (event) {
+  event.preventDefault();
+  var city = searchBarEl.value.trim();
+
+  // clear old content
+  $(document).ready(function () {
+    $(searchBarEl).val('');
+  });
+});
+
 // API URLS
 var curApiUrl = 'https://api.openweathermap.org/data/2.5/weather?';
 
@@ -20,14 +30,14 @@ var forApiUrl = 'https://api.openweathermap.org/data/2.5/forecast?';
 var apiKey = '&APPID=6c4166b2aa40bda720c59188b206ddb3';
 
 var getCurWeather = function (city) {
-  var test = fetch(`${curApiUrl}q=${city}${apiKey}`)
+  fetch(`${curApiUrl}q=${city}${apiKey}`)
     .then(function (response) {
-      console.log(test);
+      // request was successful
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
-
-          // CALL ONE API FUNCTION AND PASS LAT & LONG
+          getUvi(data.coord.lat, data.coord.lon);
+          getForecast(city);
 
           // CALL FORECAST API FUNCTION AND PASS CITY NAME
         });
@@ -36,22 +46,37 @@ var getCurWeather = function (city) {
       }
     })
     .catch(function (error) {
-      alert(`Unable to connect to Weather Network`);
+      alert(`Unable to connect to Current Weather API`);
     });
 };
 
 getCurWeather('Vancouver');
 
-$('#search-form').submit(function (event) {
-  event.preventDefault();
-  var city = searchBarEl.value.trim();
-  return cityInput;
-
-  // clear old content
-  $(document).ready(function () {
-    $(searchBarEl).val('');
+var getUvi = function (lat, lon) {
+  fetch(`${oneApiUrl}lat=${lat}&lon=${lon}${apiKey}`).then(function (response) {
+    response
+      .json()
+      .then(function (data) {
+        console.log(data);
+      })
+      .catch(function (error) {
+        alert(`Unable to connect to One Call API`);
+      });
   });
-});
+};
+
+var getForecast = function (city) {
+  fetch(`${forApiUrl}q=${city}${apiKey}`).then(function (response) {
+    response
+      .json()
+      .then(function (data) {
+        console.log(data);
+      })
+      .catch(function (error) {
+        alert(`Unable to connect to 5 Day Forecast API`);
+      });
+  });
+};
 
 // check recentCities array / localstorage and call return city weather function passing first item in array / local storage.
 
