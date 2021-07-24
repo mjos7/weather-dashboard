@@ -161,6 +161,10 @@ hr {
   margin-right: 30px;
 }
 
+.cur-weather-icon {
+  display: block;
+}
+
 .uv-background {
   color: white;
   padding: 5px 15px;

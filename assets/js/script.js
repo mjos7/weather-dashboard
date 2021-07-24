@@ -52,6 +52,8 @@ var forApiUrl = 'https://api.openweathermap.org/data/2.5/forecast?';
 
 var apiKey = '&APPID=6c4166b2aa40bda720c59188b206ddb3';
 
+// var IconUrl = 'http://openweathermap.org/img/wn/' + icon + '@2x.png';
+
 var getCurWeather = function (city) {
   fetch(`${curApiUrl}q=${city}&units=imperial${apiKey}`)
     .then(function (response) {
@@ -106,10 +108,15 @@ var getForecast = function (city) {
 // Display Current Weather
 var displayCurWeather = function (data) {
   document.getElementById('city-name').textContent = data.name;
+  document.getElementById('cur-icon').innerHTML =
+    '<img src="http://openweathermap.org/img/wn/' +
+    data.weather[0].icon +
+    '@2x.png">';
   document.getElementById('cur-temp').textContent = data.main.temp + ' ˚F';
   document.getElementById('cur-wind').textContent = data.wind.speed + ' MPH';
   document.getElementById('cur-humidity').textContent =
     data.main.humidity + ' %';
+  console.log(data.weather.icon);
 };
 
 // Display Current UVI
@@ -139,6 +146,10 @@ var emptyClass = function (element) {
 // Display Future Forecast
 var displayForecast = function (data) {
   // Day 1
+  document.getElementById('day-1-icon').innerHTML =
+    '<img src="http://openweathermap.org/img/wn/' +
+    data.list[6].weather[0].icon +
+    '@2x.png">';
   document.getElementById('day-1-temp').textContent =
     data.list[6].main.temp_max + ' ˚F';
   document.getElementById('day-1-wind').textContent =
@@ -146,6 +157,10 @@ var displayForecast = function (data) {
   document.getElementById('day-1-humidity').textContent =
     data.list[6].main.humidity + ' %';
   // Day 2
+  document.getElementById('day-2-icon').innerHTML =
+    '<img src="http://openweathermap.org/img/wn/' +
+    data.list[14].weather[0].icon +
+    '@2x.png">';
   document.getElementById('day-2-temp').textContent =
     data.list[14].main.temp_max + ' ˚F';
   document.getElementById('day-2-wind').textContent =
@@ -153,6 +168,10 @@ var displayForecast = function (data) {
   document.getElementById('day-2-humidity').textContent =
     data.list[14].main.humidity + ' %';
   // Day 3
+  document.getElementById('day-3-icon').innerHTML =
+    '<img src="http://openweathermap.org/img/wn/' +
+    data.list[22].weather[0].icon +
+    '@2x.png">';
   document.getElementById('day-3-temp').textContent =
     data.list[22].main.temp_max + ' ˚F';
   document.getElementById('day-3-wind').textContent =
@@ -160,6 +179,10 @@ var displayForecast = function (data) {
   document.getElementById('day-3-humidity').textContent =
     data.list[22].main.humidity + ' %';
   // Day 4
+  document.getElementById('day-4-icon').innerHTML =
+    '<img src="http://openweathermap.org/img/wn/' +
+    data.list[30].weather[0].icon +
+    '@2x.png">';
   document.getElementById('day-4-temp').textContent =
     data.list[30].main.temp_max + ' ˚F';
   document.getElementById('day-4-wind').textContent =
@@ -167,6 +190,10 @@ var displayForecast = function (data) {
   document.getElementById('day-4-humidity').textContent =
     data.list[30].main.humidity + ' %';
   // Day 5
+  document.getElementById('day-5-icon').innerHTML =
+    '<img src="http://openweathermap.org/img/wn/' +
+    data.list[38].weather[0].icon +
+    '@2x.png">';
   document.getElementById('day-5-temp').textContent =
     data.list[38].main.temp_max + ' ˚F';
   document.getElementById('day-5-wind').textContent =
