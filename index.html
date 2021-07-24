@@ -12,7 +12,7 @@
   </head>
   <body class="grid-container">
     <header class="header">
-      <div class="date"><h3>September 1, 2021</h3></div>
+      <h3 class="date"></h3>
       <h1>Weather Dashboard</h1>
     </header>
 
@@ -43,23 +43,23 @@
 
     <!-- DASHBOARD SECTION START -->
     <div class="dashboard-section">
-      <h2>Los Angeles, CA</h2>
+      <h2 id="city-name">Los Angeles, CA</h2>
 
       <!-- CURRENT WEATHER START -->
       <div class="current-weather-section card">
         <h3>Today</h3>
         <div class="weather-icon"></div>
         <div class="temp">
-          <p>Temp: &ensp;<span id="cur-temp">73.72˚F</span></p>
+          <p>Temp: &ensp;<span id="cur-temp"></span></p>
         </div>
         <div class="wind">
-          <p>Wind: &ensp;<span id="cur-temp"> 6.67 MPH</span></p>
+          <p>Wind: &ensp;<span id="cur-wind"> </span></p>
         </div>
         <div class="humidity">
-          <p>Humidity: &ensp;<span id="cur-temp">46%</span></p>
+          <p>Humidity: &ensp;<span id="cur-humidity"></span></p>
         </div>
         <div class="uv-index">
-          <p>UV Index: &ensp; <span id="cur-uv">0.47</span></p>
+          <p>UV Index: &ensp; <span class="" id="cur-uvi"></span></p>
         </div>
       </div>
 
@@ -73,79 +73,81 @@
             <div class="temp">
               <p>
                 Temp: &ensp;
-                <span id="cur-temp">73.72˚F</span>
+                <span id="day-1-temp"></span>
               </p>
             </div>
             <div class="wind">
-              <p>Wind: &ensp;<span id="cur-temp">26.34 MPH</span></p>
+              <p>Wind: &ensp;<span id="day-1-wind"></span></p>
             </div>
             <div class="humidity">
-              <p>Humidity: &ensp;<span id="cur-temp">30%</span></p>
+              <p>Humidity: &ensp;<span id="day-1-humidity"></span></p>
             </div>
           </div>
           <div class="card day" id="day-2">
             <h4>Tuesday</h4>
             <div class="weather-icon"></div>
             <div class="temp">
-              <p>Temp: &ensp;<span id="cur-temp">73.72˚F</span></p>
+              <p>Temp: &ensp;<span id="day-2-temp"></span></p>
             </div>
             <div class="wind">
-              <p>Wind: &ensp;<span id="cur-temp">26.34 MPH</span></p>
+              <p>Wind: &ensp;<span id="day-2-wind"></span></p>
             </div>
             <div class="humidity">
-              <p>Humidity: &ensp;<span id="cur-temp">30%</span></p>
+              <p>Humidity: &ensp;<span id="day-2-humidity"></span></p>
             </div>
           </div>
           <div class="card day" id="day-3">
             <h4>Wednesday</h4>
             <div class="weather-icon"></div>
             <div class="temp">
-              <p>Temp: &ensp;<span id="cur-temp">73.72˚F</span></p>
+              <p>Temp: &ensp;<span id="day-3-temp"></span></p>
             </div>
             <div class="wind">
-              <p>Wind: &ensp;<span id="cur-temp">26.34 MPH</span></p>
+              <p>Wind: &ensp;<span id="day-3-wind"></span></p>
             </div>
             <div class="humidity">
-              <p>Humidity: &ensp;<span id="cur-temp">30%</span></p>
+              <p>Humidity: &ensp;<span id="day-3-humidity"></span></p>
             </div>
           </div>
           <div class="card day" id="day-4">
             <h4>Thursday</h4>
             <div class="weather-icon"></div>
             <div class="temp">
-              <p>Temp: &ensp;<span id="cur-temp">73.72˚F</span></p>
+              <p>Temp: &ensp;<span id="day-4-temp"></span></p>
             </div>
             <div class="wind">
-              <p>Wind: &ensp;<span id="cur-temp">26.34 MPH</span></p>
+              <p>Wind: &ensp;<span id="day-4-wind"></span></p>
             </div>
             <div class="humidity">
-              <p>Humidity: &ensp;<span id="cur-temp">30%</span></p>
+              <p>Humidity: &ensp;<span id="day-4-humidity"></span></p>
             </div>
           </div>
           <div class="card day" id="day-5">
             <h4>Friday</h4>
             <div class="weather-icon"></div>
             <div class="temp">
-              <p>Temp: &ensp;<span id="cur-temp">73.72˚F</span></p>
+              <p>Temp: &ensp;<span id="day-5-temp"></span></p>
             </div>
             <div class="wind">
-              <p>Wind: &ensp;<span id="cur-temp">26.34 MPH</span></p>
+              <p>Wind: &ensp;<span id="day-5-wind"></span></p>
             </div>
             <div class="humidity">
-              <p>Humidity: &ensp;<span id="cur-temp">30%</span></p>
+              <p>Humidity: &ensp;<span id="day-5-humidity"></span></p>
             </div>
           </div>
         </div>
       </div>
     </div>
     <!-- SCRIPTS -->
-    <script src="./assets/js/script.js" defer></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.6/dayjs.min.js"
+      integrity="sha512-bwD3VD/j6ypSSnyjuaURidZksoVx3L1RPvTkleC48SbHCZsemT3VKMD39KknPnH728LLXVMTisESIBOAb5/W0Q=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="./assets/js/script.js" defer></script>
   </body>
 </html>
 
