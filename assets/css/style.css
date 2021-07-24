@@ -45,7 +45,6 @@
 
 h2 {
   font-size: 25px;
-  margin-bottom: 20px;
 }
 
 h4 {
@@ -104,7 +103,7 @@ header {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin-bottom: 20px;
+  margin: 20px auto;
 }
 
 .btn {
@@ -163,6 +162,16 @@ hr {
 
 .cur-weather-icon {
   display: block;
+}
+
+/* Filter styles */
+
+.saturate {
+  filter: saturate(5);
+}
+
+.contrast {
+  filter: contrast(120%);
 }
 
 .uv-background {
@@ -307,8 +316,9 @@ p span {
     width: 100%;
     text-align: center;
     display: block;
-    margin: 20px auto;
+    margin: 15px auto;
   }
+
   .day {
     width: 100%;
   }
@@ -328,5 +338,22 @@ p span {
 
   .header h3 {
     font-size: 12px;
+  }
+
+  .cur-weather-icon {
+    display: flex;
+    justify-content: center;
+  }
+
+  img {
+    align-items: center;
+  }
+
+  p {
+    text-align: center;
+  }
+  .weather-icon {
+    display: flex;
+    justify-content: center;
   }
 }
