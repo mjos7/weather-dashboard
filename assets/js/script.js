@@ -115,47 +115,64 @@ var displayCurWeather = function (data) {
 // Display Current UVI
 var displayCurUvi = function (data) {
   var curUviEl = document.getElementById('cur-uvi');
-  curUviEl.innerHTML = data.current.uvi;
-  curUviEl.classList.add('uv-background');
+  var curUvi = data.daily[0].uvi;
+  curUviEl.innerHTML = curUvi;
+  emptyClass(curUviEl);
+
+  if (curUvi <= 2) {
+    curUviEl.classList.add('uv-background-low');
+  } else if (curUvi > 2 && curUvi <= 5) {
+    curUviEl.classList.add('uv-background-moderate');
+  } else if (curUvi > 5 && curUvi <= 7) {
+    curUviEl.classList.add('uv-background-high');
+  } else if (curUvi > 7 && curUvi < 11) {
+    curUviEl.classList.add('uv-background-very-high');
+  } else if (curUvi >= 11) {
+    curUviEl.classList.add('uv-background-extreme');
+  }
+};
+
+var emptyClass = function (element) {
+  element.className = '';
 };
 
 // Display Future Forecast
 var displayForecast = function (data) {
   // Day 1
   document.getElementById('day-1-temp').textContent =
-    data.list[0].main.temp + ' ˚F';
+    data.list[6].main.temp_max + ' ˚F';
   document.getElementById('day-1-wind').textContent =
-    data.list[0].wind.speed + ' MPH';
+    data.list[6].wind.speed + ' MPH';
   document.getElementById('day-1-humidity').textContent =
-    data.list[0].main.humidity + ' %';
+    data.list[6].main.humidity + ' %';
   // Day 2
   document.getElementById('day-2-temp').textContent =
-    data.list[1].main.temp + ' ˚F';
+    data.list[14].main.temp_max + ' ˚F';
   document.getElementById('day-2-wind').textContent =
-    data.list[1].wind.speed + ' MPH';
+    data.list[14].wind.speed + ' MPH';
   document.getElementById('day-2-humidity').textContent =
-    data.list[1].main.humidity + ' %';
+    data.list[14].main.humidity + ' %';
   // Day 3
   document.getElementById('day-3-temp').textContent =
-    data.list[2].main.temp + ' ˚F';
+    data.list[22].main.temp_max + ' ˚F';
   document.getElementById('day-3-wind').textContent =
-    data.list[2].wind.speed + ' MPH';
+    data.list[22].wind.speed + ' MPH';
   document.getElementById('day-3-humidity').textContent =
-    data.list[2].main.humidity + ' %';
+    data.list[22].main.humidity + ' %';
   // Day 4
   document.getElementById('day-4-temp').textContent =
-    data.list[3].main.temp + ' ˚F';
+    data.list[30].main.temp_max + ' ˚F';
   document.getElementById('day-4-wind').textContent =
-    data.list[3].wind.speed + ' MPH';
+    data.list[30].wind.speed + ' MPH';
   document.getElementById('day-4-humidity').textContent =
-    data.list[3].main.humidity + ' %';
+    data.list[30].main.humidity + ' %';
   // Day 5
   document.getElementById('day-5-temp').textContent =
-    data.list[4].main.temp + ' ˚F';
+    data.list[38].main.temp_max + ' ˚F';
   document.getElementById('day-5-wind').textContent =
-    data.list[4].wind.speed + ' MPH';
+    data.list[38].wind.speed + ' MPH';
   document.getElementById('day-5-humidity').textContent =
-    data.list[4].main.humidity + ' %';
+    data.list[38].main.humidity + ' %';
 };
 
 // console.log($('#cur-temp'));

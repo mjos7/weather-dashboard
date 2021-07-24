@@ -162,11 +162,46 @@ hr {
 }
 
 .uv-background {
-  background-color: rgb(27, 166, 176);
   color: white;
   padding: 5px 15px;
   border-radius: 10px;
 }
+
+.uv-background-low {
+  background-color: #1bb0a8;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+
+.uv-background-moderate {
+  background-color: #ffc45a;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+
+.uv-background-high {
+  background-color: #ff945a;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+
+.uv-background-very-high {
+  background-color: #ff715a;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+
+.uv-background-extreme {
+  background-color: #9d1b1b;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+
 .future-weather-section {
   padding-right: 30px;
   line-height: 2em;
