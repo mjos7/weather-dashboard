@@ -319,8 +319,14 @@ p span {
     margin: auto;
   }
 
-  .date h3 {
+  .date {
     margin-right: auto;
-    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 7px;
+  }
+
+  .header h3 {
+    font-size: 12px;
   }
 }
