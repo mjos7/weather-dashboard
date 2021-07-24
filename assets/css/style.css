@@ -151,6 +151,10 @@ hr {
   margin-bottom: 10px;
 }
 
+.city-history {
+  text-transform: capitalize;
+}
+
 .current-weather-section {
   padding: 30px 20px;
   line-height: 2em;

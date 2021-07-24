@@ -5,8 +5,10 @@ var recentSearches = JSON.parse(localStorage.getItem('searches')) || [];
 var now = dayjs();
 var today = $('.date').append(now.format('dddd, MMMM D, YYYY'));
 var searchBarEl = document.getElementById('search-bar');
-var srchHstryEl = document.getElementById('search-history');
+var srchItemsEl = document.getElementById('search-items');
+var cityHistoryEl = document.querySelector('.city-history');
 
+// When user inputs City and submits
 $('#search-form').submit(function (event) {
   event.preventDefault();
   var city = searchBarEl.value.trim();
@@ -14,22 +16,7 @@ $('#search-form').submit(function (event) {
     alert('Please enter a city');
     return;
   } else {
-    var tempArray = JSON.parse(localStorage.getItem('searches')) || [];
-    var uniqueSearches = [];
-    if (tempArray.length > 4) {
-      tempArray.shift();
-    }
-    tempArray.push(city);
-
-    tempArray.forEach(item => {
-      if (!uniqueSearches.includes(item)) {
-        uniqueSearches.push(item);
-      }
-    });
-    tempArray === uniqueSearches;
-
-    localStorage.setItem('searches', JSON.stringify(tempArray));
-    getCurWeather(city);
+    startWeather(city);
   }
   // clear old content
   $(document).ready(function () {
@@ -37,36 +24,47 @@ $('#search-form').submit(function (event) {
   });
 });
 
+// Displaying Recent Search items
 var recentSearchItems = function () {
   // empty out recent search items (parent div)
+  srchItemsEl.innerHTML = '';
+  recentSearches = JSON.parse(localStorage.getItem('searches')) || [];
   // create a for loop going through recentSearches
-  // create a new div for each search in array
+  recentSearches.forEach(city => {
+    var srchItemDiv = document.createElement('div');
+    srchItemDiv.textContent = city;
+    srchItemDiv.classList.add('btn', 'city-history');
+    srchItemsEl.appendChild(srchItemDiv);
+  });
+};
+recentSearchItems();
+
+// Function that takes either search input or recent search click value and begings retrieving weather data
+var startWeather = function (city) {
+  var tempArray = JSON.parse(localStorage.getItem('searches')) || [];
+  var uniqueSearches = [];
+  if (tempArray.length > 4) {
+    tempArray.shift();
+  }
+  tempArray.push(city);
+
+  tempArray.forEach(item => {
+    if (!uniqueSearches.includes(item)) {
+      uniqueSearches.push(item);
+    }
+  });
+  tempArray === uniqueSearches;
+
+  localStorage.setItem('searches', JSON.stringify(tempArray));
+  getCurWeather(city);
+  recentSearchItems();
 };
 
-// var searches = JSON.parse(localStorage.getItem('saveSearches')) || [];
-
-// var saveSearch = function (city) {
-//   var recentSearch = JSON.parse(localStorage.getItem('searches')) || [];
-//   // push a new score to the variable containing the high scores from local storage
-//   recentSearches.push({ searches: city });
-//   // send the high scores to local storage
-//   localStorage.setItem('searches', JSON.stringify(recentSearch));
-// };
-
-// // Prints recent search function
-// var printSearches = function () {
-//   // get the high scores` from local storage
-//   var recentSearches = JSON.parse(localStorage.getItem('searches')) || [];
-//   // sort the scores
-
-//   // loop through the high scores and create the li’s and append them
-//   for (let i = 0; i < recentSearches.length; i++) {
-//     var recentCityDiv = document.createElement('div');
-//     recentCityDiv.textContent = `${recentSearches[i]}`;
-//     recentCityDiv.classList.add('btn city-history');
-//     srchHstryEl.appendChild(recentCityDiv);
-//   }
-// };
+srchItemsEl.addEventListener('click', function () {
+  var srchItemVal = cityHistoryEl.val();
+  console.log(srchItemVal);
+  // startWeather(srchItemVal);
+});
 
 // API URLS
 var curApiUrl = 'https://api.openweathermap.org/data/2.5/weather?';
@@ -136,7 +134,6 @@ var displayCurWeather = function (data) {
   document.getElementById('cur-wind').textContent = data.wind.speed + ' MPH';
   document.getElementById('cur-humidity').textContent =
     data.main.humidity + ' %';
-  console.log(data.weather.icon);
 };
 
 // Display Current UVI
