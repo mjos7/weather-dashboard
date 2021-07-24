@@ -18,7 +18,7 @@ $('#search-form').submit(function (event) {
   } else {
     $('html, body').animate(
       {
-        scrollTop: $('#city-name').offset().top,
+        scrollTop: $('#city-name').offset().top - 70,
       },
       500
     );
@@ -150,7 +150,7 @@ var displayCurWeather = function (data) {
   document.getElementById('cur-icon').innerHTML =
     '<img src="http://openweathermap.org/img/wn/' +
     data.weather[0].icon +
-    '@2x.png">';
+    '@2x.png" width="90" height="90">';
   document.getElementById('cur-temp').textContent =
     Math.round(data.main.temp) + ' ˚F';
   document.getElementById('cur-wind').textContent = data.wind.speed + ' MPH';
@@ -188,7 +188,7 @@ var displayForecast = function (data) {
   document.getElementById('day-1-icon').innerHTML =
     '<img src="http://openweathermap.org/img/wn/' +
     data.list[6].weather[0].icon +
-    '@2x.png">';
+    '@2x.png" width="70" height="70">';
   document.getElementById('day-1-temp').textContent =
     Math.round(data.list[6].main.temp_max) + ' ˚F';
   document.getElementById('day-1-wind').textContent =
@@ -199,7 +199,7 @@ var displayForecast = function (data) {
   document.getElementById('day-2-icon').innerHTML =
     '<img src="http://openweathermap.org/img/wn/' +
     data.list[14].weather[0].icon +
-    '@2x.png">';
+    '@2x.png" width="70" height="70">';
   document.getElementById('day-2-temp').textContent =
     Math.round(data.list[14].main.temp_max) + ' ˚F';
   document.getElementById('day-2-wind').textContent =
@@ -210,7 +210,7 @@ var displayForecast = function (data) {
   document.getElementById('day-3-icon').innerHTML =
     '<img src="http://openweathermap.org/img/wn/' +
     data.list[22].weather[0].icon +
-    '@2x.png">';
+    '@2x.png" width="70" height="70">';
   document.getElementById('day-3-temp').textContent =
     Math.round(data.list[22].main.temp_max) + ' ˚F';
   document.getElementById('day-3-wind').textContent =
@@ -221,7 +221,7 @@ var displayForecast = function (data) {
   document.getElementById('day-4-icon').innerHTML =
     '<img src="http://openweathermap.org/img/wn/' +
     data.list[30].weather[0].icon +
-    '@2x.png">';
+    '@2x.png" width="70" height="70">';
   document.getElementById('day-4-temp').textContent =
     Math.round(data.list[30].main.temp_max) + ' ˚F';
   document.getElementById('day-4-wind').textContent =
@@ -232,7 +232,7 @@ var displayForecast = function (data) {
   document.getElementById('day-5-icon').innerHTML =
     '<img src="http://openweathermap.org/img/wn/' +
     data.list[38].weather[0].icon +
-    '@2x.png">';
+    '@2x.png" width="70" height="70">';
   document.getElementById('day-5-temp').textContent =
     Math.round(data.list[38].main.temp_max) + ' ˚F';
   document.getElementById('day-5-wind').textContent =
