@@ -16,12 +16,34 @@ $('#search-form').submit(function (event) {
     alert('Please enter a city');
     return;
   } else {
+    $('html, body').animate(
+      {
+        scrollTop: $('#city-name').offset().top,
+      },
+      500
+    );
     startWeather(city);
   }
   // clear old content
   $(document).ready(function () {
     $(searchBarEl).val('');
   });
+});
+
+// Mobile scroll on submit
+$('a[href^="#"]').on('click', function (event) {
+  var target = $($(this).attr('href')),
+    navBarHeight = $('.nav').height();
+
+  if (target.length) {
+    event.preventDefault();
+    $('html, body').animate(
+      {
+        scrollTop: target.offset().top - navBarHeight,
+      },
+      1000
+    );
+  }
 });
 
 // Displaying Recent Search items
