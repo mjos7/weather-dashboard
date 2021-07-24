@@ -1,15 +1,11 @@
 'use strict';
 
 // GLOBAL VARIABLES
+var recentSearches = JSON.parse(localStorage.getItem('searches')) || [];
 var now = dayjs();
 var today = $('.date').append(now.format('dddd, MMMM D, YYYY'));
 var searchBarEl = document.getElementById('search-bar');
 var srchHstryEl = document.getElementById('search-history');
-var day2 = [{ temp: '', wind: '', humidity: '' }];
-var day3 = [{ temp: '', wind: '', humidity: '' }];
-var day4 = [{ temp: '', wind: '', humidity: '' }];
-var day5 = [{ temp: '', wind: '', humidity: '' }];
-var day6 = [{ temp: '', wind: '', humidity: '' }];
 
 $('#search-form').submit(function (event) {
   event.preventDefault();
@@ -18,7 +14,21 @@ $('#search-form').submit(function (event) {
     alert('Please enter a city');
     return;
   } else {
-    // saveSearch(city);
+    var tempArray = JSON.parse(localStorage.getItem('searches')) || [];
+    var uniqueSearches = [];
+    if (tempArray.length > 4) {
+      tempArray.shift();
+    }
+    tempArray.push(city);
+
+    tempArray.forEach(item => {
+      if (!uniqueSearches.includes(item)) {
+        uniqueSearches.push(item);
+      }
+    });
+    tempArray === uniqueSearches;
+
+    localStorage.setItem('searches', JSON.stringify(tempArray));
     getCurWeather(city);
   }
   // clear old content
@@ -26,6 +36,12 @@ $('#search-form').submit(function (event) {
     $(searchBarEl).val('');
   });
 });
+
+var recentSearchItems = function () {
+  // empty out recent search items (parent div)
+  // create a for loop going through recentSearches
+  // create a new div for each search in array
+};
 
 // var searches = JSON.parse(localStorage.getItem('saveSearches')) || [];
 
