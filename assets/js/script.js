@@ -82,12 +82,6 @@ var startWeather = function (city) {
   recentSearchItems();
 };
 
-srchItemsEl.addEventListener('click', function () {
-  var srchItemVal = cityHistoryEl.val();
-  console.log(srchItemVal);
-  // startWeather(srchItemVal);
-});
-
 // API URLS
 var curApiUrl = 'https://api.openweathermap.org/data/2.5/weather?';
 
@@ -240,3 +234,9 @@ var displayForecast = function (data) {
   document.getElementById('day-5-humidity').textContent =
     data.list[38].main.humidity + ' %';
 };
+
+$('.city-history').on('click', function () {
+  var srchItemVal = $(this)[0].innerHTML;
+  // console.log(srchItemVal);
+  startWeather(srchItemVal);
+});
