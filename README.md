@@ -6,7 +6,7 @@ Git Page - Deployed Application
 https://mjos7.github.io/weather-dashboard/
 
 **Screenshot of Mockup**
-![Screenshot of Mockup](./assets/img/weather-dashboard-mockup.png?raw=true)
+![Screenshot of Mockup](assets/img/weather-dashboard-mockup.png)
 
 ## Description
 
