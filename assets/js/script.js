@@ -235,8 +235,8 @@ var displayForecast = function (data) {
     data.list[38].main.humidity + ' %';
 };
 
-$('.city-history').on('click', function () {
-  var srchItemVal = $(this)[0].innerHTML;
-  // console.log(srchItemVal);
+srchItemsEl.addEventListener('click', function (event) {
+  var srchItemVal = event.target.innerText;
+  console.log(srchItemVal);
   startWeather(srchItemVal);
 });
